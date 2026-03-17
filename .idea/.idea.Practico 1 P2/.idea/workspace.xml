@@ -4,12 +4,7 @@
     <projectFile>Practico 1 P2/Practico 1 P2.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deee8f06-2c1f-428a-b873-ac7fefe1fcd9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Practico 1 P2.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Practico 1 P2/Practico 1 P2.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Practico 1 P2/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="deee8f06-2c1f-428a-b873-ac7fefe1fcd9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
 }]]></component>
@@ -72,13 +68,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1773760165268</updated>
-      <workItem from="1773760167431" duration="3157000" />
+      <workItem from="1773760167431" duration="3900000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
