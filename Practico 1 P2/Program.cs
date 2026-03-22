@@ -54,7 +54,7 @@ class Program
                     EjercicioSiete();
                     break;
                 case "8":
-                    // EjercicioOcho();
+                    EjercicioOcho();
                     break;
                 case "0":
                     salir = true;
@@ -143,7 +143,7 @@ class Program
                 Console.WriteLine(" ");
                 Console.WriteLine($"Tabla del {numeroIngresado}");
                 Console.WriteLine(" ");
-                for (int i = 1; i < 10; i++) // tampoco lo vimos en clase pero lo busqué para simplificar.
+                for (int i = 1; i < 10; i++)
                 {
                     Console.WriteLine($"{numeroIngresadoEntero} x {i} = {(numeroIngresadoEntero * i)}");
                 }
@@ -188,7 +188,7 @@ class Program
                 if (numeroUno < numeroDos)
                 {
                     Console.WriteLine("Los números pares son: ");
-                    for (int i = numeroUno; i < numeroDos; i++) // tampoco lo vimos en clase pero lo busqué para simplificar.
+                    for (int i = numeroUno; i < numeroDos; i++)
                     {
                         if (i % 2 == 0)
                         {
@@ -368,4 +368,43 @@ class Program
         }   
     }
     
+    
+    static void EjercicioOcho()
+    {
+        
+        // Ejercicio 8
+        // Ingresar una palabra e indicar si es palíndromo(somos).
+
+        bool salirDelEjercicio = false;
+        bool palindromo = false;
+        
+        while (!salirDelEjercicio)
+        {
+            Console.WriteLine("Ingrese una palabra para saber si es palíndromo. Ingrese 0 Para salir");
+            string palabra = Console.ReadLine();
+            if (palabra == "0")
+            {
+                salirDelEjercicio = true;
+            }
+            else
+            {
+                string palabraEspejada = "";
+                for (int i = (palabra.Length - 1); i >= 0; i--)
+                {
+                    palabraEspejada += palabra[i];
+                }
+
+                if (palabraEspejada == palabra)
+                {
+                    palindromo = true;
+                    Console.WriteLine($"La palabra '{palabra}' es palíndromo!");
+                }
+                else
+                {
+                    Console.WriteLine($"La palabra '{palabra}' NO es palíndromo!");
+                }
+            }
+        }   
+    }
+
 }
