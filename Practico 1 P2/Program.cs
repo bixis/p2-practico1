@@ -1,5 +1,7 @@
-﻿using System; // Tuve que agregar esta linea porque el código tenia muchos errores, no la vi en clase pero la busqué en google.
+﻿using System;
+using System.ComponentModel.Design; // Tuve que agregar esta linea porque el código tenia muchos errores, no la vi en clase pero la busqué en google.
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace Practico_1_P2;
 
@@ -17,9 +19,14 @@ class Program
             Console.WriteLine("");
             Console.WriteLine("Qué ejercicio desea ver?");
             Console.WriteLine("");
-            Console.WriteLine("1- Ejercicio 1 - 'Adivine el número random'");
-            Console.WriteLine("2- Ejercicio 2 - 'Ver tabla de multiplicación'");
-            Console.WriteLine("2- Ejercicio 3 - 'Ver números pares en rango dado'");
+            Console.WriteLine("1- Ejercicio 1 | 'Adivine el número random'");
+            Console.WriteLine("2- Ejercicio 2 | 'Ver tabla de multiplicación'");
+            Console.WriteLine("3- Ejercicio 3 | 'Ver números pares en rango dado'");
+            Console.WriteLine("4- Ejercicio 4 | 'Revisar número comprendido en rango'");
+            Console.WriteLine("5- Ejercicio 5 | 'Revisar número comprendido en rango'");
+            Console.WriteLine("6- Ejercicio 6 | 'Contador de vocales'");
+            Console.WriteLine("7- Ejercicio 7 | 'whoknows'");
+            Console.WriteLine("8- Ejercicio 8 | 'whoknows'");
             Console.WriteLine("0- Salir");
 
             string opcion = Console.ReadLine();
@@ -34,19 +41,37 @@ class Program
                 case "3":
                     EjercicioTres();
                     break;
+                case "4":
+                    EjercicioCuatro();
+                    break;
+                case "5":
+                    EjercicioCinco();
+                    break;
+                case "6":
+                    EjercicioSeis();
+                    break;
+                case "7":
+                    // EjercicioSiete();
+                    break;
+                case "8":
+                    // EjercicioOcho();
+                    break;
                 case "0":
                     salir = true;
                     break;
             }
         }
     }
-
-
-    // Ejercicio 1.
-    // Solicitar números hasta que ingrese el 0 (fin del ingreso).
-    // Se debe comparar con un número random e indicar cuando son iguales.
+    
+    
+    
     static void EjercicioUno()
     {
+        
+        // Ejercicio 1.
+        // Solicitar números hasta que ingrese el 0 (fin del ingreso).
+        // Se debe comparar con un número random e indicar cuando son iguales.
+        
         Random randomObjeto = new Random();
         int randomEntero = randomObjeto.Next(1, 11); // Excluyo 0 porque lo utilizamos para salir del programa, del 1 al 10 para simplificar.
         string random = randomEntero.ToString();
@@ -79,16 +104,18 @@ class Program
         }
 
     }
-
-
-    // Ejercicio 2.
-    // Solicitar números hasta que ingrese el 0 (fin del ingreso).
-    // Se debe mostrar la tabla del mismo.
+    
+    
+    
     static void EjercicioDos()
     {
+        
+        // Ejercicio 2.
+        // Solicitar números hasta que ingrese el 0 (fin del ingreso).
+        // Se debe mostrar la tabla del mismo.
+        
         bool salirDelEjercicio = false;
-
-
+        
         Console.WriteLine(" ");
         Console.WriteLine("Ingrese un número para ver su tabla de multiplicación.");
         Console.WriteLine("Ingrese 0 para salir del ejercicio.");
@@ -129,11 +156,13 @@ class Program
     }
 
 
-    // Ejercicio 3
-    // Solicitar dos números (controlar que el primer número sea menor al segundo) y muestre todos los números entre los valores ingresados que sean pares. Para salir se debe ingresar 0.
-    // CONTROLAR LOS STRING INPUTS CON TRYPARSE
+    
     static void EjercicioTres()
     {
+        
+        // Ejercicio 3
+        // Solicitar dos números (controlar que el primer número sea menor al segundo) y muestre todos los números entre los valores ingresados que sean pares. Para salir se debe ingresar 0.
+        
         bool salirDelEjercicio = false;
         
         Console.WriteLine("Ingrese el menor de los dos numeros a ingresar (0 para salir)");
@@ -175,11 +204,140 @@ class Program
                 }           
             }
         }
+    }
 
+
+    
+    static void EjercicioCuatro()
+    {
         
+        // Ejercicio 4
+        // Solicitar dos números y un valor, indicar si el valor está comprendido entre los números
+        
+        bool salirDelEjercicio = false;
+        
+        while (!salirDelEjercicio)
+        {
+            Console.WriteLine("Ingrese un número 'a'");
+            string numeroUnoStr = Console.ReadLine();
+            Console.WriteLine("Ingrese un número 'b'");
+            string numeroDosStr = Console.ReadLine();
+        
+            Console.WriteLine("Ingrese un valor 'c'");
+            string valorStr = Console.ReadLine();
+            bool okUno = int.TryParse(numeroUnoStr, out int numeroUno);
+            bool okDos = int.TryParse(numeroDosStr, out int numeroDos);
+            bool okTres = int.TryParse(valorStr, out int valor);
+            
+            if (!okUno || !okDos || !okTres)
+            {
+                Console.WriteLine("Usted ingresó valores no válidos, sólo se permiten números enteros.");
+                break;
+            }
+            else if (numeroUno == 0 || numeroDos == 0 || valor == 0)
+            {
+                salirDelEjercicio = true;
+                break;
+            }
+            else
+            {
+                if (numeroUno < valor && valor < numeroDos)
+                {
+                    Console.WriteLine($"El número {valor} está comprendido entre {numeroUno} y {numeroDos}");
+                }
+                else if (numeroUno > valor && valor > numeroDos)
+                {
+                    Console.WriteLine($"El número {valor} está comprendido entre {numeroUno} y {numeroDos}");
+                }
+                else
+                {
+                    Console.WriteLine($"El número {valor} NO está comprendido entre {numeroUno} y {numeroDos}");
+                }
+
+                Console.WriteLine(" ");
+                break;
+            }
+        }
+    }
+
+
+    
+    static void EjercicioCinco()
+    {
+        
+        // Ejercicio 5
+        // Solicitar números hasta que se ingrese el 0. Se debe mostrar la suma de todos ellos.
+        
+        bool  salirDelEjercicio = false;
+        int suma = 0;
+        
+        while (!salirDelEjercicio)
+        {
+            Console.Write("Ingrese numeros para sumarlos, 0 para salir. ");
+            string numero = Console.ReadLine();
+            bool ok = int.TryParse(numero, out int numeroEntero);
+            if (!ok)
+            {
+                Console.WriteLine("Debe ingresar solamente números!");
+            }
+            else if (numeroEntero == 0)
+            {
+                salirDelEjercicio = true;
+                Console.WriteLine("");
+                Console.WriteLine($"La suma total es de {suma}.");
+                Console.WriteLine("");
+            }
+            else
+            {
+                suma += numeroEntero;
+            }
+        }
+    }
+
+
+    static void EjercicioSeis()
+    {
+        
+        // Ejercicio 6
+        // Ingresar una palabra y mostrar la cantidad de vocales que tiene.
+        
+        bool salirDelEjercicio = false;
+        
+        // A continuacion defino las vocales como variables tipo string para que puedan ser comparadas. 
+        char a = 'a';
+        char e = 'e';
+        char i = 'i';
+        char o = 'o';
+        char u = 'u';
+        
+        while (!salirDelEjercicio)
+        {
+            // Pedir los datos
+            Console.WriteLine("Ingrese una palabra, 0 para salir. ");
+            string palabra = Console.ReadLine();
+            palabra = palabra.ToLower();
+            int contadorDeVocales = 0;
+            if (palabra == "0")
+            {
+                salirDelEjercicio = true;
+            }
+            else
+            {
+                for (int x = 0; x < palabra.Length; x++) // Preferiría utilizar 'i' para el índice pero la declaré como variable de vocal anteriormente
+                {
+                    if (palabra[x] == a || palabra[x] == e || palabra[x] == i || palabra[x] == o ||
+                        palabra[x] == u)
+                    {
+                        contadorDeVocales++;
+                    }
+                }
+                Console.WriteLine($"La palabra contiene {contadorDeVocales} vocales.");
+                Console.WriteLine("");
+                
+            }
+        }
 
     }
-    
 
 
 
