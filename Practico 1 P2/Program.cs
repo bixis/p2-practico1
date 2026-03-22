@@ -1,4 +1,4 @@
-﻿using System; // Tuve que agregar esta linea porque el código tenia muchos errores, no la vimos en clase pero la busqué en google.
+﻿using System; // Tuve que agregar esta linea porque el código tenia muchos errores, no la vi en clase pero la busqué en google.
 using System.Runtime.CompilerServices;
 
 namespace Practico_1_P2;
@@ -19,6 +19,7 @@ class Program
             Console.WriteLine("");
             Console.WriteLine("1- Ejercicio 1 - 'Adivine el número random'");
             Console.WriteLine("2- Ejercicio 2 - 'Ver tabla de multiplicación'");
+            Console.WriteLine("2- Ejercicio 3 - 'Ver números pares en rango dado'");
             Console.WriteLine("0- Salir");
 
             string opcion = Console.ReadLine();
@@ -29,6 +30,9 @@ class Program
                     break;
                 case "2":
                     EjercicioDos();
+                    break;
+                case "3":
+                    EjercicioTres();
                     break;
                 case "0":
                     salir = true;
@@ -98,7 +102,6 @@ class Program
 
             if (!ok)
             {
-
                 Console.WriteLine("Usted debe dar un string!");
                 Console.WriteLine(" ");
                 break;
@@ -128,9 +131,53 @@ class Program
 
     // Ejercicio 3
     // Solicitar dos números (controlar que el primer número sea menor al segundo) y muestre todos los números entre los valores ingresados que sean pares. Para salir se debe ingresar 0.
+    // CONTROLAR LOS STRING INPUTS CON TRYPARSE
     static void EjercicioTres()
     {
-	    // logica
+        bool salirDelEjercicio = false;
+        
+        Console.WriteLine("Ingrese el menor de los dos numeros a ingresar (0 para salir)");
+        string numeroUnoStr = Console.ReadLine();
+        Console.WriteLine("Ingrese el mayor de los dos numeros a ingresar (0 para salir)");
+        string numeroDosStr = Console.ReadLine();
+        bool okUno = int.TryParse(numeroUnoStr, out int numeroUno);
+        bool okDos = int.TryParse(numeroDosStr, out int numeroDos);
+
+        while (!salirDelEjercicio)
+        {
+            if (!okUno || !okDos)
+            {
+                Console.WriteLine("Usted debe ingresar números!");
+            }
+            else if (numeroUno == 0 || numeroDos == 0)
+            {
+                salirDelEjercicio = true;
+                break;
+            }
+            else
+            {
+                if (numeroUno < numeroDos)
+                {
+                    Console.WriteLine("Los números pares son: ");
+                    for (int i = numeroUno; i < numeroDos; i++) // tampoco lo vimos en clase pero lo busqué para simplificar.
+                    {
+                        if (i % 2 == 0)
+                        {
+                            Console.WriteLine(i);
+                        }
+                    }
+                    Console.WriteLine("");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("El numero uno debe ser mayor al número dos!");
+                }           
+            }
+        }
+
+        
+
     }
     
 
