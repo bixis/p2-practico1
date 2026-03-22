@@ -25,8 +25,8 @@ class Program
             Console.WriteLine("4- Ejercicio 4 | 'Revisar número comprendido en rango'");
             Console.WriteLine("5- Ejercicio 5 | 'Revisar número comprendido en rango'");
             Console.WriteLine("6- Ejercicio 6 | 'Contador de vocales'");
-            Console.WriteLine("7- Ejercicio 7 | 'whoknows'");
-            Console.WriteLine("8- Ejercicio 8 | 'whoknows'");
+            Console.WriteLine("7- Ejercicio 7 | 'Espejo de palabras'");
+            Console.WriteLine("8- Ejercicio 8 | 'Revisar palíndromo'");
             Console.WriteLine("0- Salir");
 
             string opcion = Console.ReadLine();
@@ -51,7 +51,7 @@ class Program
                     EjercicioSeis();
                     break;
                 case "7":
-                    // EjercicioSiete();
+                    EjercicioSiete();
                     break;
                 case "8":
                     // EjercicioOcho();
@@ -340,5 +340,32 @@ class Program
     }
 
 
+    static void EjercicioSiete()
+    {
+        
+        // Ejercicio 7
+        // Ingresar una palabra y mostrarla en el otro sentido(Hola -> aloH).
 
+        bool salirDelEjercicio = false;
+    
+        while (!salirDelEjercicio)
+        {
+            Console.WriteLine("Ingrese una palabra para mostrarla al revés. Ingrese 0 Para salir");
+            string palabra = Console.ReadLine();
+            if (palabra == "0")
+            {
+                salirDelEjercicio = true;
+            }
+            else
+            {
+                string palabraEspejada = "";
+                for (int i = (palabra.Length - 1); i >= 0; i--)
+                {
+                    palabraEspejada += palabra[i];
+                }   
+                Console.WriteLine(palabraEspejada);    
+            }
+        }   
+    }
+    
 }
