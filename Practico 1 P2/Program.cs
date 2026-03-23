@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel.Design; // Tuve que agregar esta linea porque el código tenia muchos errores, no la vi en clase pero la busqué en google.
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.Marshalling;
 
 namespace Practico_1_P2;
 
@@ -23,7 +20,7 @@ class Program
             Console.WriteLine("2- Ejercicio 2 | 'Ver tabla de multiplicación'");
             Console.WriteLine("3- Ejercicio 3 | 'Ver números pares en rango dado'");
             Console.WriteLine("4- Ejercicio 4 | 'Revisar número comprendido en rango'");
-            Console.WriteLine("5- Ejercicio 5 | 'Revisar número comprendido en rango'");
+            Console.WriteLine("5- Ejercicio 5 | 'Sumar números'");
             Console.WriteLine("6- Ejercicio 6 | 'Contador de vocales'");
             Console.WriteLine("7- Ejercicio 7 | 'Espejo de palabras'");
             Console.WriteLine("8- Ejercicio 8 | 'Revisar palíndromo'");
@@ -58,6 +55,11 @@ class Program
                     break;
                 case "0":
                     salir = true;
+                    break;
+                default:
+                    Console.WriteLine("");
+                    Console.WriteLine("Opción no válida, ingrese un numero del 1 al 8 o 0 para salir.");
+                    Console.WriteLine("");
                     break;
             }
         }
@@ -129,7 +131,7 @@ class Program
 
             if (!ok)
             {
-                Console.WriteLine("Usted debe dar un string!");
+                Console.WriteLine("Usted debe ingresar un numero entero!");
                 Console.WriteLine(" ");
                 break;
             }
@@ -164,19 +166,20 @@ class Program
         // Solicitar dos números (controlar que el primer número sea menor al segundo) y muestre todos los números entre los valores ingresados que sean pares. Para salir se debe ingresar 0.
         
         bool salirDelEjercicio = false;
-        
-        Console.WriteLine("Ingrese el menor de los dos numeros a ingresar (0 para salir)");
-        string numeroUnoStr = Console.ReadLine();
-        Console.WriteLine("Ingrese el mayor de los dos numeros a ingresar (0 para salir)");
-        string numeroDosStr = Console.ReadLine();
-        bool okUno = int.TryParse(numeroUnoStr, out int numeroUno);
-        bool okDos = int.TryParse(numeroDosStr, out int numeroDos);
 
         while (!salirDelEjercicio)
         {
+            Console.WriteLine("Ingrese el menor de los dos numeros a ingresar (0 para salir)");
+            string numeroUnoStr = Console.ReadLine();
+            Console.WriteLine("Ingrese el mayor de los dos numeros a ingresar (0 para salir)");
+            string numeroDosStr = Console.ReadLine();
+            bool okUno = int.TryParse(numeroUnoStr, out int numeroUno);
+            bool okDos = int.TryParse(numeroDosStr, out int numeroDos);
+            
             if (!okUno || !okDos)
             {
                 Console.WriteLine("Usted debe ingresar números!");
+                continue;
             }
             else if (numeroUno == 0 || numeroDos == 0)
             {
@@ -200,7 +203,9 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("El numero uno debe ser mayor al número dos!");
+                    Console.WriteLine("El numero uno debe ser menor al número dos!");
+                    Console.WriteLine("");
+                    continue;
                 }           
             }
         }
@@ -223,7 +228,7 @@ class Program
             Console.WriteLine("Ingrese un número 'b'");
             string numeroDosStr = Console.ReadLine();
         
-            Console.WriteLine("Ingrese un valor 'c'");
+            Console.WriteLine("Ingrese un valor 'c' para saber si esta comprendido entre a y b");
             string valorStr = Console.ReadLine();
             bool okUno = int.TryParse(numeroUnoStr, out int numeroUno);
             bool okDos = int.TryParse(numeroDosStr, out int numeroDos);
@@ -323,7 +328,8 @@ class Program
             }
             else
             {
-                for (int x = 0; x < palabra.Length; x++) // Preferiría utilizar 'i' para el índice pero la declaré como variable de vocal anteriormente
+                // Preferiría utilizar 'i' para el índice pero la declaré como variable de vocal anteriormente
+                for (int x = 0; x < palabra.Length; x++) 
                 {
                     if (palabra[x] == a || palabra[x] == e || palabra[x] == i || palabra[x] == o ||
                         palabra[x] == u)
@@ -376,7 +382,6 @@ class Program
         // Ingresar una palabra e indicar si es palíndromo(somos).
 
         bool salirDelEjercicio = false;
-        bool palindromo = false;
         
         while (!salirDelEjercicio)
         {
@@ -396,7 +401,6 @@ class Program
 
                 if (palabraEspejada == palabra)
                 {
-                    palindromo = true;
                     Console.WriteLine($"La palabra '{palabra}' es palíndromo!");
                 }
                 else
